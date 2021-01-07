@@ -7,15 +7,24 @@ class CalendarsController < ApplicationController
   end
 
   # 予定の保存
+<<<<<<< Updated upstream
   def create
    Plan.create(plan_params)
+=======
+  def create 
+    Plan.create(plan_params)
+>>>>>>> Stashed changes
     redirect_to action: :index
   end
 
   private
 
   def plan_params
+<<<<<<< Updated upstream
     params.require(:plan).permit(:date, :plan)
+=======
+    params.require(:calendar).permit(:date, :plans,).merge(id: current_plan.id)
+>>>>>>> Stashed changes
   end
 
   def getWeek
@@ -26,7 +35,7 @@ class CalendarsController < ApplicationController
 
     # Dateオブジェクトは、日付を保持しています。下記のように`.today.day`とすると、今日の日付を取得できます。
     @todays_date = Date.today
-    # 例)　今日が2月1日の場合・・・ Date.today.day => 1日
+    # 例) 今日が2月1日の場合・・・ Date.today.day => 1日
 
     @todays_wdays = Date.today.wday
 
@@ -38,6 +47,7 @@ class CalendarsController < ApplicationController
       plans.each do |plan|
         today_plans.push(plan.plan) if plan.date == @todays_date + x
       end
+<<<<<<< Updated upstream
 
       wday_num = Date.today.wday
       # wdayメソッドを用いて取得した数値
@@ -48,6 +58,9 @@ class CalendarsController < ApplicationController
       end
 
       days = { :month => (@todays_date + x).month, :date => (@todays_date + x).day, :plans => today_plans, :wday => wdays[Date.today.wday]}
+=======
+      days = { month: (@todays_date + x).month, date: (@todays_date+x).day, plans: today_plans}
+>>>>>>> Stashed changes
       @week_days.push(days)
     end
 
