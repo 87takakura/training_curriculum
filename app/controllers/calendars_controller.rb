@@ -48,10 +48,6 @@ class CalendarsController < ApplicationController
       end
 
 
-     #wdays.each do |num|
-     #wday_num = Date.today.wday
-
-     #while true
         @wday_num += 1
 
 
