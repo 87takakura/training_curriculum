@@ -44,11 +44,13 @@ class CalendarsController < ApplicationController
       today_plans = []
       plans.each do |plan|
         today_plans.push(plan.plan) if plan.date == @todays_date + x
-
+ 
+     
+     
       end
 
+      @wday_num += x
 
-        @wday_num += 1
 
 
       # wdayメソッドを用いて取得した数値
